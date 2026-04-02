@@ -1,0 +1,16 @@
+:root {
+  /* Brand */
+  --primary: hsla(300, 61%, 48%, 1);
+  --primary-light: hsla(300, 85%, 90%, 1);
+
+  /* Typography */
+  --heading: hsla(300, 69%, 20%, 1);
+  --body: hsla(0, 0%, 38%, 1);
+  --card-title: hsla(0, 0%, 19%, 1);
+
+  /* Layout */
+  --sidebar: hsla(300, 78%, 96%, 1);
+
+  /* UI */
+  --icon-border: hsla(300, 85%, 90%, 1);
+}
