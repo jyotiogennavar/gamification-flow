@@ -1,10 +1,10 @@
-import homeIcon from '../assets/icons/home.svg';
-import brainIcon from '../assets/icons/brain.svg';
-import briefcaseIcon from '../assets/icons/briefcase.svg';
-import applicationsIcon from '../assets/icons/applications.svg';
-import walletIcon from '../assets/icons/wallet.svg';
-import profileIcon from '../assets/icons/Profile.svg';
-import { cn } from '../lib/utils';
+import homeIcon from '@/assets/icons/home.svg';
+import brainIcon from '@/assets/icons/brain.svg';
+import briefcaseIcon from '@/assets/icons/briefcase.svg';
+import applicationsIcon from '@/assets/icons/applications.svg';
+import walletIcon from '@/assets/icons/wallet.svg';
+import profileIcon from '@/assets/icons/Profile.svg';
+import { cn } from '@/lib/utils';
 
 type SidebarItem = {
   label: string;
