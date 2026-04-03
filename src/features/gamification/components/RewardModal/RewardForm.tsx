@@ -14,30 +14,16 @@ import type { RewardFormValues } from "@/features/gamification/types/reward.type
 type RewardFormProps = {
   errorMessage: string | null
   onCancel: () => void
-  onSubmitStart: () => void
-  onSubmitError: (message: string) => void
-  onSuccess: () => void
 }
 
 export function RewardForm({
   errorMessage,
   onCancel,
-  onSubmitError,
-  onSubmitStart,
-  onSuccess,
 }: RewardFormProps) {
   const { form, isTimeBound, submitReward } = useRewardForm()
 
   const onSubmit: SubmitHandler<RewardFormValues> = async (values) => {
-    onSubmitStart()
-    const result = await submitReward(values)
-
-    if (result.ok) {
-      onSuccess()
-      return
-    }
-
-    onSubmitError(result.errorMessage)
+    await submitReward(values)
   }
 
   const handleSubmit = form.handleSubmit(onSubmit)
@@ -67,7 +53,7 @@ export function RewardForm({
           <Button
             type="button"
             variant="outline"
-            className="h-10 min-w-0 font-body text-base font-normal"
+            className="mt-2 h-10 min-w-0 font-body text-base font-normal"
             onClick={onCancel}
             disabled={form.formState.isSubmitting}
           >
@@ -76,7 +62,7 @@ export function RewardForm({
 
           <Button
             type="submit"
-            className="h-10 min-w-0 font-body text-base font-normal"
+            className="mt-2 h-10 min-w-0 font-body text-base font-normal"
             disabled={form.formState.isSubmitting || !form.formState.isValid}
           >
             {form.formState.isSubmitting ? "Creating..." : "Create Reward"}

@@ -42,12 +42,18 @@ export function RewardTypeSelect({ control }: Props) {
               onValueChange={field.onChange}
               value={field.value}
             >
-              <SelectTrigger className="h-10 w-full rounded-md px-3.5 font-body text-base font-normal data-[placeholder]:text-[var(--body-text-color)]">
+              <SelectTrigger className="mt-2 h-10 w-full rounded-md px-3.5 font-body text-base font-normal data-[placeholder]:text-[var(--body-text-color)]">
                 <SelectValue placeholder="Select an event" />
               </SelectTrigger>
-              <SelectContent position="popper" side="bottom" align="start" sideOffset={6}>
+              <SelectContent
+                className="rounded-md"
+                position="popper"
+                side="bottom"
+                align="start"
+                sideOffset={6}
+              >
                 {REWARD_EVENT_OPTIONS.map((option) => (
-                  <SelectItem key={option.value} value={option.value}>
+                  <SelectItem className="px-3 py-2" key={option.value} value={option.value}>
                     {option.label}
                   </SelectItem>
                 ))}

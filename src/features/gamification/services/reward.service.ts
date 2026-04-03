@@ -6,7 +6,8 @@ function wait(ms: number) {
   })
 }
 
-export async function createReward(_payload: RewardFormValues): Promise<void> {
+export async function createReward(payload: RewardFormValues): Promise<void> {
   // Placeholder for real API integration.
+  void payload
   await wait(800)
 }

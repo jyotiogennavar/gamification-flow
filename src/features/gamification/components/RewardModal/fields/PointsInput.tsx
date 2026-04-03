@@ -56,7 +56,7 @@ function NumericField({ control, name, label, prefix, placeholder }: NumericFiel
                 min={MIN_REWARD_VALUE}
                 max={MAX_REWARD_VALUE}
                 placeholder={placeholder}
-                className="h-10 rounded-md px-3.5 py-2 font-body text-base font-normal placeholder:text-[var(--body-text-color)]"
+                className="mt-2 h-10 rounded-md px-3.5 py-2 font-body text-base font-normal placeholder:text-[var(--body-text-color)]"
                 style={prefix ? { paddingLeft: "2rem" } : undefined}
                 value={typeof field.value === "number" || typeof field.value === "string" ? field.value : ""}
                 onChange={field.onChange}

@@ -2,19 +2,18 @@
 
 import { useEffect } from "react"
 
+import { useAppDispatch, useAppSelector } from "@/app/hooks"
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { REWARD_SUCCESS_AUTO_CLOSE_MS } from "@/features/gamification/constants/reward.constants"
 import { useRewardFlow } from "@/features/gamification/hooks/useRewardFlow"
+import { closeRewardModal } from "@/features/gamification/store/gamification.slice"
 
 import { RewardForm } from "./RewardForm"
 import { RewardSuccess } from "./RewardSuccess"
 
-type RewardModalProps = {
-  open: boolean
-  onOpenChange: (open: boolean) => void
-}
-
-export function RewardModal({ open, onOpenChange }: RewardModalProps) {
+export function RewardModal() {
+  const dispatch = useAppDispatch()
+  const open = useAppSelector((state) => state.gamification.isRewardModalOpen)
   const flow = useRewardFlow()
 
   useEffect(() => {
@@ -24,15 +23,15 @@ export function RewardModal({ open, onOpenChange }: RewardModalProps) {
 
     const timeoutId = window.setTimeout(() => {
       flow.reset()
-      onOpenChange(false)
+      dispatch(closeRewardModal())
     }, REWARD_SUCCESS_AUTO_CLOSE_MS)
 
     return () => window.clearTimeout(timeoutId)
-  }, [flow, onOpenChange])
+  }, [dispatch, flow])
 
   function handleClose() {
     flow.reset()
-    onOpenChange(false)
+    dispatch(closeRewardModal())
   }
 
   function handleOpenChange(nextOpen: boolean) {
@@ -40,8 +39,6 @@ export function RewardModal({ open, onOpenChange }: RewardModalProps) {
       handleClose()
       return
     }
-
-    onOpenChange(true)
   }
 
   return (
@@ -59,13 +56,7 @@ export function RewardModal({ open, onOpenChange }: RewardModalProps) {
         {flow.status === "success" ? (
           <RewardSuccess onClose={handleClose} />
         ) : (
-          <RewardForm
-            errorMessage={flow.errorMessage}
-            onCancel={handleClose}
-            onSubmitStart={flow.startSubmission}
-            onSubmitError={flow.markError}
-            onSuccess={flow.markSuccess}
-          />
+          <RewardForm errorMessage={flow.errorMessage} onCancel={handleClose} />
         )}
       </DialogContent>
     </Dialog>

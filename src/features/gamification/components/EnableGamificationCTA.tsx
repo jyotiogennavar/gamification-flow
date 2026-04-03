@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useAppDispatch, useAppSelector } from "@/app/hooks";
 import { RewardModal } from "@/features/gamification/components/RewardModal/RewardModal";
+import { openRewardModal } from "@/features/gamification/store/gamification.slice";
 
 type EnableGamificationCTAProps = {
   label?: string;
@@ -14,11 +15,12 @@ export function EnableGamificationCTA({
   onClick,
   className = '',
 }: EnableGamificationCTAProps) {
-  const [isRewardModalOpen, setIsRewardModalOpen] = useState(false);
+  const dispatch = useAppDispatch();
+  const isRewardModalOpen = useAppSelector((state) => state.gamification.isRewardModalOpen);
 
   const handleCtaClick = () => {
     onClick?.();
-    setIsRewardModalOpen(true);
+    dispatch(openRewardModal());
   };
 
   return (
@@ -31,7 +33,7 @@ export function EnableGamificationCTA({
         {label}
       </button>
 
-      <RewardModal open={isRewardModalOpen} onOpenChange={setIsRewardModalOpen} />
+      {isRewardModalOpen && <RewardModal />}
     </>
   );
 }

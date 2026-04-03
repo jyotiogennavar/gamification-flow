@@ -39,7 +39,7 @@ export function ExpiryDatePicker({ control }: ExpiryDatePickerProps) {
                   type="button"
                   variant="outline"
                   className={cn(
-                    "h-10 w-full justify-start rounded-md px-3.5 py-2 text-left font-body text-base font-normal",
+                    "mt-2 h-10 w-full justify-start rounded-md px-3.5 py-2 text-left font-body text-base font-normal",
                     !field.value && "text-[var(--body-text-color)]"
                   )}
                 >
