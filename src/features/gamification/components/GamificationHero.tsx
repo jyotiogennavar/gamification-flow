@@ -12,7 +12,7 @@ export function GamificationHero() {
           className="pointer-events-none absolute inset-0 h-full w-full object-cover"
         />
 
-        <div className="-mt-2 mx-auto flex max-w-[354px] flex-col items-center text-center">
+        <div className=" mx-auto flex max-w-[354px] flex-col items-center text-center">
           <h1 className="m-0 font-heading text-[28px] font-semibold leading-[140%] tracking-[0px] text-[var(--heading-text-color)]">
             Gamify your Campaign
           </h1>

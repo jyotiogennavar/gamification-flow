@@ -9,15 +9,16 @@ import { cn } from '@/lib/utils';
 type SidebarItem = {
   label: string;
   icon: string;
+  iconAlt: string;
   active?: boolean;
 };
 
 const menuItems: SidebarItem[] = [
-  { label: 'Home', icon: homeIcon },
-  { label: 'Insights', icon: brainIcon },
-  { label: 'Gamification', icon: briefcaseIcon, active: true },
-  { label: 'Applications', icon: applicationsIcon },
-  { label: 'Payments', icon: walletIcon },
+  { label: 'Home', icon: homeIcon , iconAlt: "Home"},
+  { label: 'Insights', icon: brainIcon, iconAlt: "Insights" },
+  { label: 'Gamification', icon: briefcaseIcon,iconAlt: "Gamification", active: true },
+  { label: 'Applications', icon: applicationsIcon, iconAlt: "Applications" },
+  { label: 'Payments', icon: walletIcon, iconAlt: "Payments" },
 ];
 
 export function Sidebar() {
@@ -26,7 +27,7 @@ export function Sidebar() {
       aria-label="Main sidebar navigation"
       className="flex min-h-screen w-[188px] flex-col border-r border-[#f3d9f9] bg-[#fff8ff] px-[14px] pb-5 pt-[18px] box-border"
     >
-      <div className="mb-[34px] flex items-center gap-[10px] px-2">
+      <div className="mb-[34px] flex items-center gap-[8px] px-2">
         <div
           aria-hidden="true"
           className="h-[22px] w-[22px] rounded-[8px] bg-[radial-gradient(circle_at_32%_30%,#f5b8ff_0%,#c04de8_56%,#9333ea_100%)] shadow-[0_2px_8px_rgba(170,59,255,0.35)]"
@@ -44,14 +45,14 @@ export function Sidebar() {
                 type="button"
                 aria-current={item.active ? 'page' : undefined}
                 className={cn(
-                  'flex w-full cursor-pointer items-center gap-3 rounded-xl border-none px-3 py-[10px] text-left font-heading leading-[1.2]',
+                  'flex w-full cursor-pointer items-center gap-2 rounded-lg border-none px-3 py-[10px] text-left font-heading leading-[1.2]',
                   item.active
                     ? 'bg-white text-[#d61be3] shadow-[0_2px_8px_rgba(127,78,137,0.08)]'
                     : 'bg-transparent text-[#5b5663]'
                 )}
               >
-                <img src={item.icon} alt="" className="h-5 w-5" aria-hidden="true" />
-                <span className={cn('text-[17px]', item.active ? 'font-semibold' : 'font-medium')}>
+                <img src={item.icon} alt={item.iconAlt} className="h-5 w-5" aria-hidden="true" />
+                <span className={cn('text-[14px]', item.active ? 'font-semibold' : 'font-medium')}>
                   {item.label}
                 </span>
               </button>
@@ -62,9 +63,9 @@ export function Sidebar() {
 
       <button
         type="button"
-        className="mt-auto flex cursor-pointer items-center gap-3 border-none bg-transparent px-3 py-[10px] font-heading text-[17px] font-medium text-[#5b5663]"
+          className="mt-auto flex cursor-pointer items-center gap-2 rounded-lg border-none bg-transparent px-3 py-[10px] font-heading text-[14px] font-medium text-[#5b5663]"
       >
-        <img src={profileIcon} alt="" className="h-5 w-5" aria-hidden="true" />
+        <img src={profileIcon} alt="Profile" className="h-5 w-5" aria-hidden="true" />
         <span>Settings</span>
       </button>
     </aside>

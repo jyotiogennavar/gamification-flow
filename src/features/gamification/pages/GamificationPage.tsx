@@ -3,7 +3,7 @@ import { FeatureCards } from '../components/FeatureCards';
 
 export function GamificationPage() {
   return (
-    <main className="min-h-screen bg-white">
+    <main className="bg-white">
       <GamificationHero />
       <FeatureCards />
     </main>

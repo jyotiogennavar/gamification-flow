@@ -30,7 +30,7 @@ const cards: FeatureCardProps[] = [
 
 export function FeatureCards() {
   return (
-    <section className="flex flex-wrap justify-center gap-5">
+    <section className="flex flex-wrap justify-center gap-6">
       {cards.map((card) => (
         <FeatureCard key={card.title} {...card} />
       ))}

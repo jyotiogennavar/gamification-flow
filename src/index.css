@@ -4,8 +4,6 @@
 @import "@fontsource/plus-jakarta-sans";
 @import "@fontsource/inter";
 
-@custom-variant dark (&:is(.dark *));
-
 :root {
   --text: #6b6375;
   --text-h: #08060d;
