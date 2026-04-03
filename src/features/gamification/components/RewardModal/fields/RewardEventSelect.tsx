@@ -16,30 +16,27 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
-import { REWARD_WITH_OPTIONS } from "@/features/gamification/constants/reward.constants"
-import type {
-  RewardFormInput,
-  RewardFormValues,
-} from "@/features/gamification/types/reward.types"
+import { REWARD_EVENT_OPTIONS } from "@/features/gamification/constants/reward.constants"
+import type { RewardFormInput, RewardFormValues } from "@/features/gamification/types/reward.types"
 
 type Props = {
   control: Control<RewardFormInput, unknown, RewardFormValues>
 }
 
-export function RewardTypeSelect({ control }: Props) {
+export function RewardEventSelect({ control }: Props) {
   return (
     <FormField
       control={control}
-      name="rewardType"
+      name="rewardEvent"
       render={({ field }) => (
         <FormItem className="space-y-2">
           <FormLabel className="font-body text-sm font-normal text-[var(--card-title)]">
-            Reward with <span className="text-destructive">*</span>
+            Reward event <span className="text-destructive">*</span>
           </FormLabel>
           <FormControl>
             <Select onValueChange={field.onChange} value={field.value}>
               <SelectTrigger className="mt-2 h-10 w-full rounded-md px-3.5 font-body text-base font-normal data-[placeholder]:text-[var(--body-text-color)]">
-                <SelectValue placeholder="Select a reward" />
+                <SelectValue placeholder="Select an event" />
               </SelectTrigger>
               <SelectContent
                 className="rounded-md"
@@ -48,7 +45,7 @@ export function RewardTypeSelect({ control }: Props) {
                 align="start"
                 sideOffset={6}
               >
-                {REWARD_WITH_OPTIONS.map((option) => (
+                {REWARD_EVENT_OPTIONS.map((option) => (
                   <SelectItem className="px-3 py-2" key={option.value} value={option.value}>
                     {option.label}
                   </SelectItem>

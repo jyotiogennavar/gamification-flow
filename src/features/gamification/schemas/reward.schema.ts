@@ -4,12 +4,16 @@ import {
   MAX_REWARD_VALUE,
   MIN_REWARD_VALUE,
   REWARD_EVENTS,
+  REWARD_TYPES,
 } from "@/features/gamification/constants/reward.constants"
 
 export const rewardSchema = z
   .object({
     rewardEvent: z.enum(REWARD_EVENTS, {
       error: "Reward event is required",
+    }),
+    rewardType: z.enum(REWARD_TYPES, {
+      error: "Reward type is required",
     }),
     salesThreshold: z.coerce
       .number({

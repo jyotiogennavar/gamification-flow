@@ -7,6 +7,7 @@ import { useRewardForm } from "@/features/gamification/hooks/useRewardForm"
 
 import { ExpiryDatePicker } from "@/features/gamification/components/RewardModal/fields/ExpiryDatePicker"
 import { PointsInput } from "@/features/gamification/components/RewardModal/fields/PointsInput"
+import { RewardEventSelect } from "@/features/gamification/components/RewardModal/fields/RewardEventSelect"
 import { RewardTypeSelect } from "@/features/gamification/components/RewardModal/fields/RewardTypeSelect"
 import { TimeBoundToggle } from "@/features/gamification/components/RewardModal/fields/TimeBoundToggle"
 import type { RewardFormValues } from "@/features/gamification/types/reward.types"
@@ -32,6 +33,7 @@ export function RewardForm({
     <FormProvider {...form}>
       <form onSubmit={handleSubmit} className="flex h-full flex-col">
         <div className="space-y-3">
+          <RewardEventSelect control={form.control} />
           <RewardTypeSelect control={form.control} />
           <PointsInput control={form.control} />
           <TimeBoundToggle control={form.control} />
