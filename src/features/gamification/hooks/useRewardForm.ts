@@ -15,6 +15,12 @@ export function useRewardForm() {
   const form = useForm<RewardFormInput, unknown, RewardFormValues>({
     resolver: zodResolver(rewardSchema),
     defaultValues: DEFAULT_REWARD_FORM_VALUES,
+    mode: "onChange",
+  })
+
+  const rewardEvent = useWatch({
+    control: form.control,
+    name: "rewardEvent",
   })
 
   const isTimeBound = Boolean(
@@ -23,6 +29,49 @@ export function useRewardForm() {
       name: "isTimeBound",
     })
   )
+
+  useEffect(() => {
+    if (rewardEvent === "sales_threshold") {
+      form.setValue("postCount", undefined, {
+        shouldDirty: true,
+        shouldTouch: true,
+        shouldValidate: true,
+      })
+      form.setValue("postPeriod", undefined, {
+        shouldDirty: true,
+        shouldTouch: true,
+        shouldValidate: true,
+      })
+      return
+    }
+
+    if (rewardEvent === "posting_frequency") {
+      form.setValue("salesThreshold", undefined, {
+        shouldDirty: true,
+        shouldTouch: true,
+        shouldValidate: true,
+      })
+      return
+    }
+
+    if (rewardEvent === "onboarded") {
+      form.setValue("salesThreshold", undefined, {
+        shouldDirty: true,
+        shouldTouch: true,
+        shouldValidate: true,
+      })
+      form.setValue("postCount", undefined, {
+        shouldDirty: true,
+        shouldTouch: true,
+        shouldValidate: true,
+      })
+      form.setValue("postPeriod", undefined, {
+        shouldDirty: true,
+        shouldTouch: true,
+        shouldValidate: true,
+      })
+    }
+  }, [form, rewardEvent])
 
   useEffect(() => {
     if (!isTimeBound) {

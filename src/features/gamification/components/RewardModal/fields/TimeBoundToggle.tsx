@@ -25,10 +25,10 @@ export function TimeBoundToggle({ control }: Props) {
       control={control}
       name="isTimeBound"
       render={({ field }) => (
-        <FormItem className="flex items-center justify-between rounded-lg border p-3">
-          <div className="space-y-0.5">
-            <FormLabel>Make the reward time bound</FormLabel>
-            <FormDescription>
+        <FormItem className="flex items-start justify-between gap-4 space-y-0 pt-1">
+          <div className="space-y-1 pr-2">
+            <FormLabel className="font-body text-sm font-normal text-[var(--card-title)]">Make the reward time bound</FormLabel>
+            <FormDescription className="text-sm text-muted-foreground text-[12px]">
               Choose an end date to stop this reward automatically.
             </FormDescription>
           </div>
@@ -37,6 +37,7 @@ export function TimeBoundToggle({ control }: Props) {
             <Switch
               checked={field.value}
               onCheckedChange={field.onChange}
+              className="data-checked:bg-[var(--primary)]"
             />
           </FormControl>
         </FormItem>

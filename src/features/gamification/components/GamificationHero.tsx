@@ -1,4 +1,4 @@
-import purpleSquareTileBackground from '../../../assets/backgrounds/purple-square-tile-background.svg';
+import purpleSquareTileBackground from '../../../assets/backgrounds/purple-square-tile-background.png';
 import { EnableGamificationCTA } from './EnableGamificationCTA';
 
 export function GamificationHero() {

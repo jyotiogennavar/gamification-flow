@@ -10,7 +10,7 @@
   --bg: #fff;
   --border: oklch(0.922 0 0);
   --code-bg: #f4f3ec;
-  --accent: oklch(0.97 0 0);
+  --accent: var(--primary);
   --accent-bg: rgba(170, 59, 255, 0.1);
   --accent-border: rgba(170, 59, 255, 0.5);
   --social-bg: rgba(244, 243, 236, 0.5);
@@ -35,7 +35,7 @@
   --body: 'Inter', system-ui, 'Segoe UI', Roboto, sans-serif;
   --heading: 'Plus Jakarta Sans', 'Inter', system-ui, 'Segoe UI', Roboto, sans-serif;
 
-  font: 18px/145% var(--body);
+  font: 16px/140% var(--body);
   letter-spacing: 0.18px;
   color-scheme: light dark;
   color: var(--text);
@@ -61,9 +61,9 @@
 
   --popover-foreground: oklch(0.145 0 0);
 
-  --primary: oklch(0.205 0 0);
+  --primary: hsl(300 61% 48%);
 
-  --primary-foreground: oklch(0.985 0 0);
+  --primary-foreground: hsl(0 0% 100%);
 
   --secondary: oklch(0.97 0 0);
 
@@ -73,13 +73,13 @@
 
   --muted-foreground: oklch(0.556 0 0);
 
-  --accent-foreground: oklch(0.205 0 0);
+  --accent-foreground: var(--primary-foreground);
 
   --destructive: oklch(0.577 0.245 27.325);
 
   --input: oklch(0.922 0 0);
 
-  --ring: oklch(0.708 0 0);
+  --ring: hsl(300 61% 48%);
 
   --chart-1: oklch(0.87 0 0);
 

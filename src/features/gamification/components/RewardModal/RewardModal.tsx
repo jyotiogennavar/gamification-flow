@@ -46,7 +46,10 @@ export function RewardModal({ open, onOpenChange }: RewardModalProps) {
 
   return (
     <Dialog open={open} onOpenChange={handleOpenChange}>
-      <DialogContent className="sm:max-w-md" showCloseButton={flow.status !== "submitting"}>
+      <DialogContent
+        className="h-auto w-[400px] max-w-[calc(100%-2rem)] gap-3 overflow-hidden rounded-[12px] p-6 sm:max-w-[400px]"
+        showCloseButton={flow.status !== "submitting"}
+      >
         <DialogHeader>
           <DialogTitle>
             {flow.status === "success" ? "Reward ready" : "Create your reward system"}

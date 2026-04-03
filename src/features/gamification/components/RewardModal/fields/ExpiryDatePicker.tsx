@@ -28,8 +28,10 @@ export function ExpiryDatePicker({ control }: ExpiryDatePickerProps) {
       control={control}
       name="expiryDate"
       render={({ field }) => (
-        <FormItem className="flex flex-col">
-          <FormLabel>Expiry date *</FormLabel>
+        <FormItem className="space-y-2">
+          <FormLabel className="font-body text-sm font-normal text-[var(--card-title)]">
+            Expiry date <span className="text-destructive">*</span>
+          </FormLabel>
           <Popover>
             <FormControl>
               <PopoverTrigger asChild>
@@ -37,8 +39,8 @@ export function ExpiryDatePicker({ control }: ExpiryDatePickerProps) {
                   type="button"
                   variant="outline"
                   className={cn(
-                    "w-full justify-start text-left font-normal",
-                    !field.value && "text-muted-foreground"
+                    "h-10 w-full justify-start rounded-md px-3.5 py-2 text-left font-body text-base font-normal",
+                    !field.value && "text-[var(--body-text-color)]"
                   )}
                 >
                   <CalendarIcon className="mr-2 size-4" />
@@ -46,7 +48,7 @@ export function ExpiryDatePicker({ control }: ExpiryDatePickerProps) {
                 </Button>
               </PopoverTrigger>
             </FormControl>
-            <PopoverContent className="w-auto p-0" align="start">
+            <PopoverContent className="w-auto p-0" align="start" side="bottom" sideOffset={6}>
               <Calendar
                 mode="single"
                 selected={field.value}
@@ -62,7 +64,7 @@ export function ExpiryDatePicker({ control }: ExpiryDatePickerProps) {
               />
             </PopoverContent>
           </Popover>
-          <FormDescription>
+          <FormDescription className="text-sm text-muted-foreground">
             Reward will automatically stop after this date.
           </FormDescription>
           <FormMessage />

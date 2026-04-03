@@ -44,31 +44,41 @@ export function RewardForm({
 
   return (
     <FormProvider {...form}>
-      <form onSubmit={handleSubmit} className="space-y-5">
-        <RewardTypeSelect control={form.control} />
-        <PointsInput control={form.control} />
-        <TimeBoundToggle control={form.control} />
+      <form onSubmit={handleSubmit} className="flex h-full flex-col">
+        <div className="space-y-3">
+          <RewardTypeSelect control={form.control} />
+          <PointsInput control={form.control} />
+          <TimeBoundToggle control={form.control} />
 
-        {isTimeBound && <ExpiryDatePicker control={form.control} />}
+          {isTimeBound && (
+            <div className="animate-in fade-in-0 slide-in-from-top-1 duration-200">
+              <ExpiryDatePicker control={form.control} />
+            </div>
+          )}
 
-        {errorMessage && (
-          <p className="rounded-md border border-destructive/30 bg-destructive/10 px-3 py-2 text-sm text-destructive">
-            {errorMessage}
-          </p>
-        )}
+          {errorMessage && (
+            <p className="rounded-md border border-destructive/30 bg-destructive/10 px-3 py-2 text-sm text-destructive">
+              {errorMessage}
+            </p>
+          )}
+        </div>
 
-        <div className="flex justify-between gap-3 pt-2">
+        <div className="mt-auto grid grid-cols-2 gap-4 pt-3">
           <Button
             type="button"
             variant="outline"
-            className="w-full"
+            className="h-10 min-w-0 font-body text-base font-normal"
             onClick={onCancel}
             disabled={form.formState.isSubmitting}
           >
             Cancel
           </Button>
 
-          <Button type="submit" className="w-full" disabled={form.formState.isSubmitting}>
+          <Button
+            type="submit"
+            className="h-10 min-w-0 font-body text-base font-normal"
+            disabled={form.formState.isSubmitting || !form.formState.isValid}
+          >
             {form.formState.isSubmitting ? "Creating..." : "Create Reward"}
           </Button>
         </div>

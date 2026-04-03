@@ -1,27 +1,70 @@
 import { z } from "zod"
 
 import {
-  MAX_REWARD_POINTS,
-  MIN_REWARD_POINTS,
-  REWARD_TYPES,
+  MAX_REWARD_VALUE,
+  MIN_REWARD_VALUE,
+  REWARD_EVENTS,
 } from "@/features/gamification/constants/reward.constants"
 
 export const rewardSchema = z
   .object({
-    rewardType: z.enum(REWARD_TYPES, {
-      error: "Reward type is required",
+    rewardEvent: z.enum(REWARD_EVENTS, {
+      error: "Reward event is required",
     }),
-    points: z.coerce
+    salesThreshold: z.coerce
       .number({
-        error: "Points must be a number",
+        error: "Value must be a number",
       })
-      .int("Points must be a whole number")
-      .min(MIN_REWARD_POINTS, "Points must be greater than 0")
-      .max(MAX_REWARD_POINTS, "Points are too large"),
+      .int("Value must be a whole number")
+      .min(MIN_REWARD_VALUE, "Value must be greater than 0")
+      .max(MAX_REWARD_VALUE, "Value is too large")
+      .optional(),
+    postCount: z.coerce
+      .number({
+        error: "Value must be a number",
+      })
+      .int("Value must be a whole number")
+      .min(MIN_REWARD_VALUE, "Value must be greater than 0")
+      .max(MAX_REWARD_VALUE, "Value is too large")
+      .optional(),
+    postPeriod: z.coerce
+      .number({
+        error: "Value must be a number",
+      })
+      .int("Value must be a whole number")
+      .min(MIN_REWARD_VALUE, "Value must be greater than 0")
+      .max(MAX_REWARD_VALUE, "Value is too large")
+      .optional(),
     isTimeBound: z.boolean().default(false),
     expiryDate: z.date({ error: "Invalid date" }).optional(),
   })
   .superRefine((data, ctx) => {
+    if (data.rewardEvent === "sales_threshold" && !data.salesThreshold) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: "Sales amount is required.",
+        path: ["salesThreshold"],
+      })
+    }
+
+    if (data.rewardEvent === "posting_frequency") {
+      if (!data.postCount) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          message: "Post count is required.",
+          path: ["postCount"],
+        })
+      }
+
+      if (!data.postPeriod) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          message: "Period value is required.",
+          path: ["postPeriod"],
+        })
+      }
+    }
+
     if (!data.isTimeBound) {
       return
     }

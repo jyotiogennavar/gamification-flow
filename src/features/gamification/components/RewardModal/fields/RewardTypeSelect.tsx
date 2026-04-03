@@ -17,7 +17,7 @@ import {
 } from "@/components/ui/select";
 
 import type { Control } from "react-hook-form";
-import { REWARD_TYPE_OPTIONS } from "@/features/gamification/constants/reward.constants";
+import { REWARD_EVENT_OPTIONS } from "@/features/gamification/constants/reward.constants";
 import type {
   RewardFormInput,
   RewardFormValues,
@@ -31,20 +31,22 @@ export function RewardTypeSelect({ control }: Props) {
   return (
     <FormField
       control={control}
-      name="rewardType"
+      name="rewardEvent"
       render={({ field }) => (
-        <FormItem>
-          <FormLabel>Reward event *</FormLabel>
+        <FormItem className="space-y-2">
+          <FormLabel className="font-body text-sm font-normal text-[var(--card-title)]">
+            Reward event <span className="text-destructive">*</span>
+          </FormLabel>
           <FormControl>
             <Select
               onValueChange={field.onChange}
               value={field.value}
             >
-              <SelectTrigger>
+              <SelectTrigger className="h-10 w-full rounded-md px-3.5 font-body text-base font-normal data-[placeholder]:text-[var(--body-text-color)]">
                 <SelectValue placeholder="Select an event" />
               </SelectTrigger>
-              <SelectContent>
-                {REWARD_TYPE_OPTIONS.map((option) => (
+              <SelectContent position="popper" side="bottom" align="start" sideOffset={6}>
+                {REWARD_EVENT_OPTIONS.map((option) => (
                   <SelectItem key={option.value} value={option.value}>
                     {option.label}
                   </SelectItem>
