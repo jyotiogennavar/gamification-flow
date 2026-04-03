@@ -35,7 +35,7 @@ export function RewardTypeSelect({ control }: Props) {
       render={({ field }) => (
         <FormItem className="space-y-2">
           <FormLabel className="font-body text-sm font-normal text-[var(--card-title)]">
-            Reward event <span className="text-destructive">*</span>
+            Reward with <span className="text-destructive">*</span>
           </FormLabel>
           <FormControl>
             <Select
@@ -43,7 +43,7 @@ export function RewardTypeSelect({ control }: Props) {
               value={field.value}
             >
               <SelectTrigger className="mt-2 h-10 w-full rounded-md px-3.5 font-body text-base font-normal data-[placeholder]:text-[var(--body-text-color)]">
-                <SelectValue placeholder="Select an event" />
+                <SelectValue placeholder="Select a reward" />
               </SelectTrigger>
               <SelectContent
                 className="rounded-md"

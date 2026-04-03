@@ -23,7 +23,7 @@ export function FeatureCard({ title, description, icon, iconAlt }: FeatureCardPr
   </div>
 </div>
 
-      <h3 className="relative z-10 mb-2 font-heading text-[16px] leading-[1.25] font-medium tracking-[0px] text-[var(--card-title)]">
+      <h3 className="relative z-10 mb-2 font-heading text-[16px] leading-[1.25] font-semibold tracking-[0px] text-[var(--card-title)]">
         {title}
       </h3>
 

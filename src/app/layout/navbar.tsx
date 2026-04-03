@@ -29,6 +29,11 @@ export function Navbar({
           className="relative inline-flex h-[34px] w-[34px] cursor-pointer items-center justify-center rounded-full border-none bg-transparent text-[#4b4455]"
         >
           <img src={BellIcon} alt="Bell" />
+          {notificationCount > 0 && (
+            <span className="absolute right-[1px] top-[-1px] inline-flex min-h-[16px] min-w-[16px] items-center justify-center rounded-full bg-[#f0437d] px-1 text-[10px] font-semibold leading-none text-white">
+              {notificationCount}
+            </span>
+          )}
         </button>
 
         <div
