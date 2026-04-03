@@ -84,6 +84,12 @@ Why:
 
 ---
 
+### Responsive Design Considerations
+
+Responsiveness is also a core part of this implementation and has been improved as part of the layout work. The UI is designed to adapt smoothly across screen sizes, including a compact sidebar behavior around tablet widths and fluid `h1` typography using `clamp()` for better readability without abrupt breakpoint jumps.
+
+---
+
 ## Trade-offs
 
 | Decision              | Trade-off                          | Reason |
